@@ -2,10 +2,10 @@ using System;
 
 namespace ScreenSound.Models
 {
-    public class Banda
+    internal class Banda
     {
         private List<Album> albuns = new();
-        private List<int> notas = new();
+        private List<Avaliacao> notas = new();
 
         public Banda(string nome)
         {
@@ -13,9 +13,9 @@ namespace ScreenSound.Models
         }
 
         public string Nome { get; }
-        public double Media => notas.Count == 0 ? 0 : notas.Average();
+        public double Media => notas.Count == 0 ? 0 : notas.Average(a => a.Nota);
         public List<Album> Albuns => albuns;
-        public List<int> Notas => notas;
+        public List<Avaliacao> Notas => notas;
 
         // Função para adicionar um album
         public void AdicionarAlbum(Album album)
@@ -27,12 +27,9 @@ namespace ScreenSound.Models
         }
 
         // Função para adicionar uma nota
-        public void AdicionarNota(int nota)
+        public void AdicionarNota(Avaliacao nota)
         {
-            if (nota >= 0 && nota <= 10)
-            {
-                notas.Add(nota);
-            }
+            notas.Add(nota);
         }
     }
 }

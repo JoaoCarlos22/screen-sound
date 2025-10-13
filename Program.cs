@@ -1,4 +1,5 @@
-﻿using ScreenSound.Models;
+﻿using System.Runtime.CompilerServices;
+using ScreenSound.Models;
 
 // Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound!";
@@ -66,8 +67,8 @@ void ListarBandas()
     foreach (var banda in bandas)
     {
         string nome = banda.Value.Nome;
-        List<int> notas = banda.Value.Notas;
-        Console.WriteLine("Banda: {0}, Notas: {1}", nome, string.Join(", ", notas));
+        List<Avaliacao> notas = banda.Value.Notas;
+        Console.WriteLine("Banda: {0}, Notas: {1}", nome, string.Join(", ", notas.Select(n => n.Nota)));
     }
     Console.WriteLine("");
     VoltarMenu();
@@ -85,9 +86,16 @@ void AvaliarBanda()
     {
         Console.Write($"\nInforme a sua nota para a banda {nomeBanda}: ");
         int nota = int.Parse(Console.ReadLine()!);
-        banda.AdicionarNota(nota);
+        Avaliacao avaliacao = new(nota);
+        banda.AdicionarNota(avaliacao);
 
-        Console.WriteLine("\nAvaliação adicionada com sucesso!");
+        if (nota < 0 || nota > 10)
+        {
+            Console.WriteLine("\nA nota deve ser entre 0 e 10!");
+        } else
+        {
+            Console.WriteLine("\nAvaliação adicionada com sucesso!");
+        }
         VoltarMenu();
     }
     else

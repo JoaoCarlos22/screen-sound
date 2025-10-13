@@ -2,7 +2,7 @@ using System;
 
 namespace ScreenSound.Models
 {
-    public class Artista
+    internal class Artista
     {
         public string Nome { get; set; }
         public string Biografia { get; set; }
