@@ -85,11 +85,10 @@ void AvaliarBanda()
     if (bandas.TryGetValue(nomeBanda, out banda))
     {
         Console.Write($"\nInforme a sua nota para a banda {nomeBanda}: ");
-        int nota = int.Parse(Console.ReadLine()!);
-        Avaliacao avaliacao = new(nota);
-        banda.AdicionarNota(avaliacao);
+        Avaliacao nota = Avaliacao.Parser(Console.ReadLine()!);
+        banda.AdicionarNota(nota);
 
-        if (nota < 0 || nota > 10)
+        if (nota.Nota < 0 || nota.Nota > 10)
         {
             Console.WriteLine("\nA nota deve ser entre 0 e 10!");
         } else

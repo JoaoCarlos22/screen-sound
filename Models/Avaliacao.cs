@@ -10,5 +10,11 @@ namespace ScreenSound.Models
             if (nota < 0 || nota > 10) return;
             Nota = nota;
         }
+
+        public static Avaliacao Parser(string nota)
+        {
+            int notaInt = int.Parse(nota);
+            return new Avaliacao(notaInt);
+        }
     }
 }
