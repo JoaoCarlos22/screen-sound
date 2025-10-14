@@ -2,11 +2,11 @@ using System;
 using ScreenSound.Models;
 namespace ScreenSound.Menus
 {
-    internal class ListarBandas
+    internal class ListarBandas: Menu
     {
-        internal void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Banda> bandas)
         {
-            Console.Clear();
+            base.Exibir(bandas);
             Console.WriteLine("LISTA DE BANDAS\n");
             foreach (var banda in bandas)
             {

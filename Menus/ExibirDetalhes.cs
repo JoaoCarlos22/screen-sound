@@ -3,11 +3,11 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    internal class ExibirDetalhes
+    internal class ExibirDetalhes: Menu
     {
-        internal void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Banda> bandas)
         {
-            Console.Clear();
+            base.Exibir(bandas);
             Console.WriteLine("EXIBIR DETALHES DE UMA BANDA");
             Console.Write("Digite o nome da banda que deseja ver os detalhes: ");
             string nomeBanda = Console.ReadLine()!;

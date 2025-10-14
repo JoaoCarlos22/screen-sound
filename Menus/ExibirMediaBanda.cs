@@ -3,11 +3,11 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    public class ExibirMediaBanda
+    internal class ExibirMediaBanda : Menu
     {
-        internal void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Banda> bandas)
         {
-            Console.Clear();
+            base.Exibir(bandas);
             Console.WriteLine("MÉDIA DE AVALIAÇÃO DE UMA BANDA");
             Console.Write("Digite o nome da banda que deseja buscar: ");
             string nomeBanda = Console.ReadLine()!;

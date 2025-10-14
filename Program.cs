@@ -4,8 +4,17 @@ using ScreenSound.Models;
 // Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound!";
 Dictionary<string, Banda> bandas = new();
+Dictionary<int, Menu> menu = new()
+{
+    { 1, new RegistrarBanda() },
+    { 2, new ListarBandas() },
+    { 3, new AvaliarBanda() },
+    { 4, new ExibirMediaBanda() },
+    { 5, new ExibirDetalhes() }
+};
 
-void ExibirMensagemBoasVindas() {
+void ExibirMensagemBoasVindas()
+{
     Console.WriteLine(mensagemDeBoasVindas);
 }
 
@@ -23,40 +32,21 @@ void ExibirMenu()
     string opcaoEscolhida = Console.ReadLine()!;
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
 
-    switch (opcaoEscolhidaNumerica)
+    if (opcaoEscolhidaNumerica == -1)
     {
-        case 1:
-            RegistrarBanda menu1 = new();
-            menu1.Exibir(bandas);
-            VoltarMenu();
-            break;
-        case 2:
-            ListarBandas menu2 = new();
-            menu2.Exibir(bandas);
-            VoltarMenu();
-            break;
-        case 3:
-            AvaliarBanda menu3 = new();
-            menu3.Exibir(bandas);
-            VoltarMenu();
-            break;
-        case 4:
-            ExibirMediaBanda menu4 = new();
-            menu4.Exibir(bandas);
-            VoltarMenu();
-            break;
-        case 5:
-            ExibirDetalhes menu5 = new();
-            menu5.Exibir(bandas);
-            VoltarMenu();
-            break;
-        case -1:
-            Console.WriteLine("Tchau tchau :)");
-            break;
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+        Console.WriteLine("Tchau tchau :)");
+        return;
     }
+
+    if (!menu.ContainsKey(opcaoEscolhidaNumerica))
+    {
+        Console.WriteLine("Opção inválida");
+        VoltarMenu();
+        return;
+    }
+    
+    menu[opcaoEscolhidaNumerica].Exibir(bandas);
+    VoltarMenu();
 }
 
 void VoltarMenu()

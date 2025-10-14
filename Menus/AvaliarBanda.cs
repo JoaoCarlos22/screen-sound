@@ -3,11 +3,11 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    public class AvaliarBanda
+    internal class AvaliarBanda: Menu
     {
-        internal void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Banda> bandas)
         {
-            Console.Clear();
+            base.Exibir(bandas);
             Console.WriteLine("AVALIAÇÃO DE UMA BANDA");
             Console.Write("Digite o nome da banda que deseja avaliar: ");
             string nomeBanda = Console.ReadLine()!;

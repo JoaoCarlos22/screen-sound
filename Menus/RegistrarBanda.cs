@@ -3,11 +3,11 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    internal class RegistrarBanda
+    internal class RegistrarBanda: Menu
     {
-        internal void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Banda> bandas)
         {
-            Console.Clear();
+            base.Exibir(bandas);
             Console.WriteLine("REGISTRO DE BANDAS");
             Console.Write("Digite o nome da banda: ");
             string nomeBanda = Console.ReadLine()!;
