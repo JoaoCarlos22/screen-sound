@@ -8,8 +8,8 @@ Dictionary<int, Menu> menu = new()
 {
     { 1, new RegistrarBanda() },
     { 2, new ListarBandas() },
-    { 3, new AvaliarBanda() },
-    { 4, new ExibirMediaBanda() },
+    { 3, new AdicionarAlbum() },
+    { 4, new AvaliarBanda() },
     { 5, new ExibirDetalhes() }
 };
 
@@ -23,8 +23,8 @@ void ExibirMenu()
     ExibirMensagemBoasVindas();
     Console.WriteLine("\n1 - registrar uma banda");
     Console.WriteLine("2 - listar bandas");
-    Console.WriteLine("3 - avaliar uma banda");
-    Console.WriteLine("4 - exibir a média de uma banda");
+    Console.WriteLine("3 - adicionar álbum a uma banda");
+    Console.WriteLine("4 - avaliar uma banda");
     Console.WriteLine("5 - exibir detalhes de uma banda");
     Console.WriteLine("Digite -1 para sair");
 

@@ -31,6 +31,32 @@ namespace ScreenSound.Menus
                 {
                     Console.WriteLine("Essa banda ainda não possui avaliações.");
                 }
+
+                if (banda.Albuns.Count > 0)
+                {
+                    Console.WriteLine("\nÁlbuns:");
+                    foreach (var album in banda.Albuns)
+                    {
+                        Console.WriteLine($"- {album.Nome}");
+                        if (album.Notas.Count > 0)
+                        {
+                            Console.WriteLine("  Avaliações:");
+                            foreach (var avaliacao in album.Notas)
+                            {
+                                Console.WriteLine($"  - Nota: {avaliacao.Nota}");
+                            }
+                            Console.WriteLine($"  Média das avaliações: {album.Media:F2}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("  Esse álbum ainda não possui avaliações.");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Essa banda ainda não possui álbuns.");
+                }
             }
             else
             {
