@@ -3,7 +3,7 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    internal class ExibirDetalhes: Menu
+    internal class ExibirDetalhes : Menu
     {
         public override void Exibir(Dictionary<string, Banda> bandas)
         {
@@ -12,55 +12,44 @@ namespace ScreenSound.Menus
             Console.Write("Digite o nome da banda que deseja ver os detalhes: ");
             string nomeBanda = Console.ReadLine()!;
 
-            if (bandas.ContainsKey(nomeBanda))
+            if (!bandas.TryGetValue(nomeBanda, out Banda? banda))
             {
-                Banda banda = bandas[nomeBanda];
-                Console.WriteLine($"\nDetalhes da banda {banda.Nome}:");
+                Console.WriteLine($"A banda {nomeBanda} não foi encontrada.");
+                return;
+            }
 
-                if (banda.Notas.Count > 0)
-                {
-                    Console.WriteLine("Avaliações:");
-                    foreach (var avaliacao in banda.Notas)
-                    {
-                        Console.WriteLine($"- Nota: {avaliacao.Nota}");
-                    }
+            Console.WriteLine($"\nDetalhes da banda {banda.Nome}:");
+            ExibirAvaliacoes("Avaliações", banda.Notas, banda.Media);
 
-                    Console.WriteLine($"Média das avaliações: {banda.Media:F2}");
-                }
-                else
+            if (banda.Albuns.Count > 0)
+            {
+                Console.WriteLine("\nÁlbuns:");
+                foreach (var album in banda.Albuns)
                 {
-                    Console.WriteLine("Essa banda ainda não possui avaliações.");
-                }
-
-                if (banda.Albuns.Count > 0)
-                {
-                    Console.WriteLine("\nÁlbuns:");
-                    foreach (var album in banda.Albuns)
-                    {
-                        Console.WriteLine($"- {album.Nome}");
-                        if (album.Notas.Count > 0)
-                        {
-                            Console.WriteLine("  Avaliações:");
-                            foreach (var avaliacao in album.Notas)
-                            {
-                                Console.WriteLine($"  - Nota: {avaliacao.Nota}");
-                            }
-                            Console.WriteLine($"  Média das avaliações: {album.Media:F2}");
-                        }
-                        else
-                        {
-                            Console.WriteLine("  Esse álbum ainda não possui avaliações.");
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Essa banda ainda não possui álbuns.");
+                    Console.WriteLine($"- {album.Nome}");
+                    ExibirAvaliacoes("  Avaliações", album.Notas, album.Media, "  ");
                 }
             }
             else
             {
-                Console.WriteLine($"A banda {nomeBanda} não foi encontrada.");
+                Console.WriteLine("Essa banda ainda não possui álbuns.");
+            }
+        }
+
+        private void ExibirAvaliacoes(string titulo, List<Avaliacao> notas, double media, string indent = "")
+        {
+            if (notas.Count > 0)
+            {
+                Console.WriteLine($"{indent}{titulo}:");
+                foreach (var avaliacao in notas)
+                {
+                    Console.WriteLine($"{indent}- Nota: {avaliacao.Nota}");
+                }
+                Console.WriteLine($"{indent}Média das avaliações: {media:F2}");
+            }
+            else
+            {
+                Console.WriteLine($"{indent}Ainda não possui avaliações.");
             }
         }
     }
