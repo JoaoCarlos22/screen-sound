@@ -4,9 +4,10 @@ namespace ScreenSound.Models
 {
     internal class Musica
     {
-        public Musica(string nome, Artista artista)
+        public Musica(string nome, int duracao, Artista artista)
         {
             Nome = nome;
+            Duracao = duracao;
             Artista = artista;
         }
 

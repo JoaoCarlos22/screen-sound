@@ -28,7 +28,10 @@ namespace ScreenSound.Menus
             Album album = artista.Albuns.First(a => a.Nome.Equals(nomeAlbum));
             Console.Write("Digite o nome da música: ");
             string nomeMusica = Console.ReadLine()!;
-            Musica musica = new(nomeMusica, artista);
+
+            Console.Write("Digite a duração da música em segundos: ");
+            int duracao = int.Parse(Console.ReadLine()!);
+            Musica musica = new(nomeMusica, duracao, artista);
             album.AdicionarMusica(musica);
             Console.WriteLine("Música adicionada com sucesso!");
         }
