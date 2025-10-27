@@ -4,7 +4,7 @@ namespace ScreenSound.Menus
 {
     internal class Menu
     {
-        public virtual void Exibir(Dictionary<string, Banda> bandas)
+        public virtual void Exibir(Dictionary<string, Artista> artistas)
         {
             Console.Clear();
         }

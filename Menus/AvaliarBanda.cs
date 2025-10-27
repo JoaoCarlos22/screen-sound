@@ -3,33 +3,33 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    internal class AvaliarBanda: Menu
+    internal class AvaliarArtista: Menu
     {
-        public override void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Artista> artistas)
         {
-            base.Exibir(bandas);
-            Console.WriteLine("AVALIAÇÃO DE UMA BANDA");
-            Console.Write("Digite o nome da banda que deseja avaliar: ");
-            string nomeBanda = Console.ReadLine()!;
+            base.Exibir(artistas);
+            Console.WriteLine("AVALIAÇÃO DE UM ARTISTA");
+            Console.Write("Digite o nome do artista que deseja avaliar: ");
+            string nomeArtista = Console.ReadLine()!;
 
-            Banda? banda;
-            if (bandas.TryGetValue(nomeBanda, out banda))
+            Artista? artista;
+            if (artistas.TryGetValue(nomeArtista, out artista))
             {
-                Console.Write($"\nInforme a sua nota para a banda {nomeBanda}: ");
+                Console.Write($"\nInforme a sua nota para o artista {nomeArtista}: ");
                 Avaliacao nota = Avaliacao.Parser(Console.ReadLine()!);
-                banda.AdicionarNota(nota);
-
+                
                 if (nota.Nota < 0 || nota.Nota > 10)
                 {
                     Console.WriteLine("\nA nota deve ser entre 0 e 10!");
                 } else
                 {
+                    artista.AdicionarNota(nota);
                     Console.WriteLine("\nAvaliação adicionada com sucesso!");
                 }
             }
             else
             {
-                Console.WriteLine($"\nA banda {nomeBanda} não foi encontrada!");
+                Console.WriteLine($"\nO artista {nomeArtista} não foi encontrado!");
             }
         }
     }

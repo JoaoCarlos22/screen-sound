@@ -3,13 +3,13 @@ using ScreenSound.Models;
 
 // Screen Sound
 string mensagemDeBoasVindas = "Boas vindas ao Screen Sound!";
-Dictionary<string, Banda> bandas = new();
+Dictionary<string, Artista> artistas = new();
 Dictionary<int, Menu> menu = new()
 {
-    { 1, new RegistrarBanda() },
-    { 2, new ListarBandas() },
+    { 1, new RegistrarArtista() },
+    { 2, new ListarArtistas() },
     { 3, new AdicionarAlbum() },
-    { 4, new AvaliarBanda() },
+    { 4, new AvaliarArtista() },
     { 5, new AvaliarAlbum() },
     { 6, new ExibirDetalhes() }
 };
@@ -22,12 +22,12 @@ void ExibirMensagemBoasVindas()
 void ExibirMenu()
 {
     ExibirMensagemBoasVindas();
-    Console.WriteLine("\n1 - registrar uma banda");
-    Console.WriteLine("2 - listar bandas");
-    Console.WriteLine("3 - adicionar álbum a uma banda");
-    Console.WriteLine("4 - avaliar uma banda");
+    Console.WriteLine("\n1 - registrar um artista");
+    Console.WriteLine("2 - listar artistas");
+    Console.WriteLine("3 - adicionar álbum a um artista");
+    Console.WriteLine("4 - avaliar um artista");
     Console.WriteLine("5 - avaliar um álbum");
-    Console.WriteLine("6 - exibir detalhes de uma banda");
+    Console.WriteLine("6 - exibir detalhes de um artista");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");
@@ -47,7 +47,7 @@ void ExibirMenu()
         return;
     }
     
-    menu[opcaoEscolhidaNumerica].Exibir(bandas);
+    menu[opcaoEscolhidaNumerica].Exibir(artistas);
     VoltarMenu();
 }
 

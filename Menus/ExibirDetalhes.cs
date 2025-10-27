@@ -5,26 +5,27 @@ namespace ScreenSound.Menus
 {
     internal class ExibirDetalhes : Menu
     {
-        public override void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Artista> artistas)
         {
-            base.Exibir(bandas);
-            Console.WriteLine("EXIBIR DETALHES DE UMA BANDA");
-            Console.Write("Digite o nome da banda que deseja ver os detalhes: ");
-            string nomeBanda = Console.ReadLine()!;
+            base.Exibir(artistas);
+            Console.WriteLine("EXIBIR DETALHES DE UM ARTISTA");
+            Console.Write("Digite o nome do artista que deseja ver os detalhes: ");
+            string nomeArtista = Console.ReadLine()!;
 
-            if (!bandas.TryGetValue(nomeBanda, out Banda? banda))
+            Artista? artista;
+            if (!artistas.TryGetValue(nomeArtista, out artista))
             {
-                Console.WriteLine($"A banda {nomeBanda} não foi encontrada.");
+                Console.WriteLine($"O artista {nomeArtista} não foi encontrado.");
                 return;
             }
 
-            Console.WriteLine($"\nDetalhes da banda {banda.Nome}:");
-            ExibirAvaliacoes("Avaliações", banda.Notas, banda.Media);
+            Console.WriteLine($"\nDetalhes do artista {artista.Nome}:");
+            ExibirAvaliacoes("Avaliações", artista.Notas, artista.Media);
 
-            if (banda.Albuns.Count > 0)
+            if (artista.Albuns.Count > 0)
             {
                 Console.WriteLine("\nÁlbuns:");
-                foreach (var album in banda.Albuns)
+                foreach (var album in artista.Albuns)
                 {
                     Console.WriteLine($"- {album.Nome}");
                     ExibirAvaliacoes("  Avaliações", album.Notas, album.Media, "  ");
@@ -32,7 +33,7 @@ namespace ScreenSound.Menus
             }
             else
             {
-                Console.WriteLine("Essa banda ainda não possui álbuns.");
+                Console.WriteLine("Esse artista ainda não possui álbuns.");
             }
         }
 

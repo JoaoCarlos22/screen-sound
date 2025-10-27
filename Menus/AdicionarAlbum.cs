@@ -5,23 +5,23 @@ namespace ScreenSound.Menus
 {
     internal class AdicionarAlbum : Menu
     {
-        public override void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Artista> artistas)
         {
-            base.Exibir(bandas);
-            Console.WriteLine("ADICIONAR ÁLBUM A UMA BANDA");
-            Console.Write("Digite o nome da banda: ");
-            string nomeBanda = Console.ReadLine()!;
-            if (!bandas.ContainsKey(nomeBanda))
+            base.Exibir(artistas);
+            Console.WriteLine("ADICIONAR ÁLBUM A UM ARTISTA");
+            Console.Write("Digite o nome do artista: ");
+            string nomeArtista = Console.ReadLine()!;
+            if (!artistas.ContainsKey(nomeArtista))
             {
-                Console.WriteLine($"Banda {nomeBanda} não encontrada.");
+                Console.WriteLine($"Artista {nomeArtista} não encontrado.");
                 return;
             }
 
-            Banda banda = bandas[nomeBanda];
+            Artista artista = artistas[nomeArtista];
             Console.Write("Digite o nome do álbum: ");
             string nomeAlbum = Console.ReadLine()!;
-            banda.AdicionarAlbum(new Album(nomeAlbum));
-            Console.WriteLine($"Álbum {nomeAlbum} da banda {nomeBanda} foi adicionado com sucesso!");
+            artista.AdicionarAlbum(new Album(nomeAlbum));
+            Console.WriteLine($"Álbum {nomeAlbum} do artista {nomeArtista} foi adicionado com sucesso!");
         }
     }
 }

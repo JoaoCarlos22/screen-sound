@@ -3,18 +3,20 @@ using ScreenSound.Models;
 
 namespace ScreenSound.Menus
 {
-    internal class RegistrarBanda: Menu
+    internal class RegistrarArtista: Menu
     {
-        public override void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Artista> artistas)
         {
-            base.Exibir(bandas);
-            Console.WriteLine("REGISTRO DE BANDAS");
-            Console.Write("Digite o nome da banda: ");
-            string nomeBanda = Console.ReadLine()!;
-            Banda banda = new(nomeBanda);
+            base.Exibir(artistas);
+            Console.WriteLine("REGISTRO DE ARTISTAS");
+            Console.Write("Digite o nome do artista: ");
+            string nomeArtista = Console.ReadLine()!;
+            Console.Write("Digite a biografia do artista: ");
+            string biografiaArtista = Console.ReadLine()!;
+            Artista artista = new(nomeArtista, biografiaArtista, new List<Album>());
 
-            Console.WriteLine($"A banda {banda.Nome} foi registrada com sucesso!");
-            bandas.Add(banda.Nome, banda);
+            Console.WriteLine($"O artista {artista.Nome} foi registrado com sucesso!");
+            artistas.Add(artista.Nome, artista);
         }
     }
 }

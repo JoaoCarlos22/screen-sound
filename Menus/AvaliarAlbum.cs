@@ -5,27 +5,27 @@ namespace ScreenSound.Menus
 {
     internal class AvaliarAlbum : Menu
     {
-        public override void Exibir(Dictionary<string, Banda> bandas)
+        public override void Exibir(Dictionary<string, Artista> artistas)
         {
-            base.Exibir(bandas);
+            base.Exibir(artistas);
             Console.WriteLine("AVALIAÇÃO DE UM ÁLBUM");
-            Console.Write("Digite o nome da banda dona do álbum que deseja avaliar: ");
-            string nomeBanda = Console.ReadLine()!;
-            if (!bandas.ContainsKey(nomeBanda))
+            Console.Write("Digite o nome do artista dono do álbum que deseja avaliar: ");
+            string nomeArtista = Console.ReadLine()!;
+            if (!artistas.ContainsKey(nomeArtista))
             {
-                Console.WriteLine("Banda não encontrada.");
+                Console.WriteLine("Artista não encontrado.");
                 return;
             }
 
-            Banda banda = bandas[nomeBanda];
+            Artista artista = artistas[nomeArtista];
             Console.Write("Digite o nome do álbum que deseja avaliar: ");
             string nomeAlbum = Console.ReadLine()!;
-            if (!banda.Albuns.Any(a => a.Nome.Equals(nomeAlbum)))
+            if (!artista.Albuns.Any(a => a.Nome.Equals(nomeAlbum)))
             {
                 Console.WriteLine("Álbum não encontrado.");
                 return;
             }
-            Album album = banda.Albuns.First(a => a.Nome.Equals(nomeAlbum));
+            Album album = artista.Albuns.First(a => a.Nome.Equals(nomeAlbum));
             Console.Write("Digite a nota (0 a 10): ");
             Avaliacao nota = Avaliacao.Parser(Console.ReadLine()!);
             album.AdicionarNota(nota);
