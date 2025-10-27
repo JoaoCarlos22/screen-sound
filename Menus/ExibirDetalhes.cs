@@ -30,6 +30,15 @@ namespace ScreenSound.Menus
                     Console.WriteLine($"- {album.Nome}");
                     ExibirAvaliacoes("  Avaliações", album.Notas, album.Media, "  ");
                 }
+
+                Console.WriteLine("\nMúsicas:");
+                foreach (var album in artista.Albuns)
+                {
+                    foreach (var musica in album.Musicas)
+                    {
+                        Console.WriteLine($"- {musica.Nome}");
+                    }
+                }
             }
             else
             {

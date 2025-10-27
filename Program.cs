@@ -9,9 +9,10 @@ Dictionary<int, Menu> menu = new()
     { 1, new RegistrarArtista() },
     { 2, new ListarArtistas() },
     { 3, new AdicionarAlbum() },
-    { 4, new AvaliarArtista() },
-    { 5, new AvaliarAlbum() },
-    { 6, new ExibirDetalhes() }
+    { 4, new AdicionarMusica() },
+    { 5, new AvaliarArtista() },
+    { 6, new AvaliarAlbum() },
+    { 7, new ExibirDetalhes() }
 };
 
 void ExibirMensagemBoasVindas()
@@ -25,9 +26,10 @@ void ExibirMenu()
     Console.WriteLine("\n1 - registrar um artista");
     Console.WriteLine("2 - listar artistas");
     Console.WriteLine("3 - adicionar álbum a um artista");
-    Console.WriteLine("4 - avaliar um artista");
-    Console.WriteLine("5 - avaliar um álbum");
-    Console.WriteLine("6 - exibir detalhes de um artista");
+    Console.WriteLine("4 - registrar música a um álbum");
+    Console.WriteLine("5 - avaliar um artista");
+    Console.WriteLine("6 - avaliar um álbum");
+    Console.WriteLine("7 - exibir detalhes de um artista");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");
